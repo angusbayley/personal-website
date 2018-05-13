@@ -8,7 +8,12 @@ body {
 }
 
 p {
-	margin: 15px 0 15px 0
+	margin: 15px 0 15px 0;
+	line-height: 1.4em;
+}
+
+li {
+	line-height: 1.8em;
 }
 
 #spacer {
