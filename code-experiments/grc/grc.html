@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <script type="text/javascript" src="grc.js"></script>
+    <link rel="stylesheet" type="text/css" href="grc.css"/>
+    <link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="entireWrapper">
+        <div id="leftBar">
+            <div id="mouseCapture">
+                <h1>Gear Calculator</h1><i class="fa fa-question-circle fa-2x"></i>
+                <div id="helpDropdown">
+                    <div class="helpBoxTriangle"></div>
+                    <div class="helpTextContainer">
+                        <span id="what">What is this?</span><span id="walkthrough"/>Walk me through this tool</span>
+                    </div>
+                </div>
+            </div>
+            <div id="entries">
+                <h3></h3>
+                <p>
+                    <div id="buttons">
+                        <div id="button1" class="radio">Gear Ratios</div>
+                        <div id="button2" class="radio">Velocity</div>
+                        <div id="button3" class="radio">Gain Ratios</div>
+                        <div id="explnContainer">
+                            <div class="explnDropdown" id="GearR">
+                                <div class="helpBoxTriangle"></div>
+                                <div class="helpTextContainer">
+                                    The gear ratio is the number of turns of the back wheel per cycle of the chainring
+                                </div>
+                            </div>
+                            <div class="explnDropdown" id="speed">
+                                <div class="helpBoxTriangle"></div>
+                                <div class="helpTextContainer">
+                                    This is the speed that you achieve for a given sprocket/chainring combination when pedalling at a specified rate (RPM)
+                                </div>
+                            </div>
+                            <div class="explnDropdown" id="GainR">
+                                <div class="helpBoxTriangle"></div>
+                                <div class="helpTextContainer">
+                                    The gain ratio is the number of meters the outermost point of the tyre rotates through per meter that the outermost point of the cranks (your feet) move. Think of it as how much your bike is amplifying the movement of your feet
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <hr/>
+                <p>Chainring size (teeth)
+                    <div id="frontGearInputContainer">
+                        <input id="front1" size="1"></input>
+                        <input id="front2" size="1"></input>
+                        <input id="front3" size="1"></input>
+                    </div>
+                    <br/>
+                </p>
+                <p>Sprocket size (teeth)
+                    <div id="rearGearInputContainer">
+                        <input id="rear1"></input>
+                        <input id="rear2"></input>
+                        <input id="rear3"></input>
+                        <input id="rear4"></input>
+                        <input id="rear5"></input>
+                        <input id="rear6"></input>
+                        <input id="rear7"></input>
+                        <input id="rear8"></input>
+                        <input id="rear9"></input>
+                        <input id="rear10"></input>
+                        <input id="rear11"></input>
+                        <input id="rear12"></input>
+                    </div>
+                </p>
+                <hr/>
+                <div id="crankLengthSliderBox">
+                    <label for="crankLength">Crank Length</label>
+                    <div class="InputContainer">
+                        <input type="text" id="crankLength"/>
+                        <div id="crankLengthSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 8.16326530612245%;"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="rpmSliderBox">
+                    <label for="rpm">RPM</label>
+                    <div class="InputContainer">
+                        <input type="text" id="rpm"/>
+                        <div id="rpmSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 8.16326530612245%;"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="wheelRadiusBox"><hr/>
+                    Wheel
+                    <div class="InputContainer">
+                        <select class="wheel" id="wheelType">
+                                <option value="700">700 &times</option>
+                                <option value="29">29" &times</option>
+                                <option value="28">28" &times</option>
+                                <option value="27">27" &times</option>
+                                <option value="650">650 &times</option>
+                                <option value="26">26" &times</option>
+                                <option value="24">24" &times</option>
+                                <option value="20">20" &times</option>
+                                <option value="18">18" &times</option>
+                                <option value="17">17" &times</option>
+                                <option value="16">16" &times</option>
+                            </select>
+                        <select class="tyre" id="wheel700">
+                            <option value="0.7076">44</option>
+                            <option value="0.6939">38</option>
+                            <option value="0.6901">35</option>
+                            <option value="0.6858">32</option>
+                            <option value="0.6797">28</option>
+                            <option value="0.6701">25</option>
+                            <option value="0.6675">23</option>
+                            <option value="0.6640">20</option>
+                            <option value="0.6600">18</option>
+                         </select>
+                        <select class="tyre" id="wheel29">
+                            <option value="0.7350">2.3</option>
+                            <option value="0.7018">2.1</option>
+                            <option value="0.6941">1.9</option>
+                         </select>
+                        <select class="tyre" id="wheel28">
+                            <option value="0.7150">1 1/2</option>
+                         </select>
+                        <select class="tyre" id="wheel27">
+                            <option value="0.6903">1 3/8</option>
+                            <option value="0.6878">1 1/4</option>
+                            <option value="0.6858">1 1/8</option>
+                            <option value="0.6828">1</option>
+                         </select>
+                        <select class="tyre" id="wheel26">
+                            <option value="0.6708">2.35</option>
+                            <option value="0.6589">2.125</option>
+                            <option value="0.6541">1.9</option>
+                            <option value="0.6317">1.5</option>
+                            <option value="0.6215">1.25</option>
+                            <option value="0.6088">1.0</option>
+                            <option value="0.6581">1 3/8</option>
+                         </select>
+                        <select class="tyre" id="wheel650">
+                            <option value="0.6604">38B</option>
+                            <option value="0.6274">28C</option>
+                            <option value="0.6213">25C</option>
+                            <option value="0.6175">23C</option>
+                         </select>
+                        <select class="tyre" id="wheel24">
+                            <option value="0.5580">1</option>
+                         </select>
+                        <select class="tyre" id="wheel20">
+                            <option value="0.5118">1 3/8</option>
+                            <option value="0.5054">1.1/8</option>
+                            <option value="0.4745">1.75</option>
+                            <option value="0.4681">1.25</option>
+                         </select>
+                        <select class="tyre" id="wheel18">
+                            <option value="0.4359">1.5</option>
+                         </select>
+                        <select class="tyre" id="wheel17">
+                            <option value="0.4216">1 1/2</option>
+                         </select>
+                        <select class="tyre" id="wheel16">
+                            <option value="0.4288">1 1/2</option>
+                            <option value="0.4082">1 3/8</option>
+                            <option value="0.3419">1.5</option>
+                         </select>
+                    </div>
+                    <hr/>
+                </div>
+                <div id="units">Units
+                    <div class="InputContainer">
+                        <div id="kph" class="radio2 selected">kph</div>
+                        <div id="mph" class="radio2">mph</div>
+                    </div><hr/>
+                </div>
+                <button type="button" id="save">Save Current</button><button type="button" id="calculateThis">Calculate</button>
+            </div>
+            <p id="footer">
+                <span>This tool is still in development</span>. It works best in Chrome, Safari or Firefox.
+                <br/><br/>
+                Made by <a href="http://www.angusbayley.co.uk">Angus Bayley</a> and <a href="http://www.georgerichardson.net">George Richardson</a>.
+            </p>
+        </div>
+        <div id="introMessage">
+            <div id="arrow">
+                <div id="arrowTriangle"></div>
+                <div id="arrowBar"></div>
+            </div>
+            <div id="introWords">
+                choose which calculation you want to perform
+            </div>
+        </div>
+        <div id="stacks">
+            <div class="stack" id="resultsStack">
+                <div class="results_table">
+                    <h3>Results: <span class="resultsTitle">Gear Ratio</span></h3>
+                    <div class="resultsContainer">
+                        <div class="resultsContainer2">
+                            <div class="result1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results_chart">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="300px" width="100%">
+                    </svg>
+                </div>   
+            </div>
+        </div>
+    </div>
+    <div id="about"> 
+        <div id="aboutText">
+            <h2>About</h2>
+            <p>
+                This tool makes it easy to experiment with different bicycle gear configurations, whether you're an experienced bike builder or a first time bike hacker. It has been built with iteration in mind, and allows direct and simple comparison of different gear setups. If you are new to it and don't know what it does, take the <span>walkthrough tour</span>.
+            </p>
+            <p>
+                Inspiration for this came whilst using the <a href="http://sheldonbrown.com/gears/">calculator Sheldon Brown built</a> but finding it complicated and inconvenient to use. Extra features are being added to this all the time. If we're missing something you want, <a href="mailto:angusbayleyweb@gmail.com">let us know</a>! 
+            </p>
+        </div>   
+    </div>
+</body>
+</html>
