@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+       /* * {
+            border: 1px dashed blue;
+        } */
+
+        #pendule {
+            margin: auto;
+            text-align: center;
+        }
+        
+        #clockContainer {
+            background-color: #E4F5F6;
+            width: 354px;
+            padding: 10px 10px 7px 10px;
+            margin: auto;
+            border-radius: 5px;
+        }
+
+        #clockContainer .hourBox {
+            background-color: white;
+            margin: 0px 0px 0px 0px;
+            width: 7.27%;
+            height: 15px;
+            display: inline-block;
+            border-radius: 3px;
+        } 
+
+        #clockContainer .minuteBox {
+            background-color: white;
+            margin: 0px 2px 0px 0px;
+            width: 4px;
+            height: 15px;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        #clockContainer .secondBox {
+            background-color: white;
+            margin: 0px 2px 0px 0px;
+            width: 4px;
+            height: 15px;
+            display: inline-block;
+            border-radius: 2px;
+        } 
+        
+    </style>
+    <meta name="description" content="First clock by Angus Bayley">
+</head>
+<body>
+    <div id="pendule"></div>
+    <br><br>
+    <div id="clockContainer">
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="hourBox"></div>
+        <div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div><div class="minuteBox"></div>
+
+        <div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div><div class="secondBox"></div>
+    </div>
+    <br><br>
+    <div id ="bottomBox"></div>
+    
+
+    <script language="javascript" type="text/javascript">
+        function clock() {
+            var digital = new Date();
+            var hours = digital.getHours();
+            var minutes = digital.getMinutes();
+            var seconds = digital.getSeconds();
+            var amOrPm = "AM";
+            if (hours > 11) amOrPm = "PM";
+            if (hours > 12) hours = hours - 12;
+            if (hours == 0) hours = 12;
+            if (minutes <= 9) minutes = "0" + minutes;
+            if (seconds <= 9) seconds = "0" + seconds;
+            dispTime = '<b>'+hours + ":" + minutes + ":" + seconds + " " + amOrPm+'</b>';
+            //document.getElementById('pendule').innerHTML = dispTime;
+            //document.getElementById("bottomBox").innerHTML = seconds;
+            hourBoxes = document.getElementsByClassName('hourBox');
+            minuteBoxes = document.getElementsByClassName("minuteBox");
+            secondBoxes = document.getElementsByClassName("secondBox");
+            for (i=0; i<hours; i++) {
+                hourBoxes[i].style.background="red";
+            };
+            if (hours === 12) {
+                for (i=0; i<hourBoxes.length; i++) {
+                    hourBoxes[i].style.background="white";
+                };
+            };
+            for (i=0; i<minutes; i++) {
+                minuteBoxes[i].style.background="red";
+            };
+            if (minutes === "00") {
+                for (i=0; i<minuteBoxes.length; i++) {
+                    minuteBoxes[i].style.background="white";
+                };
+            };
+            for (i=0; i<seconds; i++) {
+                secondBoxes[i].style.background="red";
+            };
+            if (seconds === "00") {
+                for (i=0; i<secondBoxes.length; i++) {
+                    secondBoxes[i].style.background="white";
+                };
+            };
+            setTimeout("clock()", 1000);
+        }
+        window.onload=clock;
+    </script>
+</body>
+</html>
