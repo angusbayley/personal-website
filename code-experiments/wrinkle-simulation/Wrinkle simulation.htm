@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://angusbayley.co.uk/wrinkling%20canvas/wrinkles.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Wrinkle simulation</title>
+	<link href="./Wrinkle simulation_files/css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./Wrinkle simulation_files/wrinkles.css">
+	<script type="text/javascript" language="javascript" src="./Wrinkle simulation_files/jquery-1.10.2.js"></script>
+	<meta name="description" content="Simulation of mechanical wrinkling, Euler buckling, by Angus Bayley">
+	<!--<script type="text/javascript" language="javascript" src="wrinkles2.js"></script>-->
+</head>
+<body style="">
+	<br>
+	<div id="column">
+		<h2>Experiment: Interactive Web Canvas to aid Understanding of Complex Systems</h2>
+		<br>
+		<!--<div>
+			Javascript <b><span id="jsTest" style="color:red">is not</span></b> working today.
+		</div>
+		<br>-->
+		<p>
+			One of the most often cited sources of dissatisfaction for research students is that they don't feel like enough of an expert to be doing what they are doing, and I suspect that this is at least in part down to the depth of their understanding of the science behind their work. Specifically, when entering a new research field a student must often get to grips with sets of equations that describe complicated processes that that research field deals with, and may not fully understand the implications of the maths before they are pressured to move on. 
+			<!--From my own experience, I know that some students have a problem with this because they are pulled away from trying to understand it half way through because of pressure to begin in the lab, leaving with an incomplete understanding of the maths when they start work.-->
+			I've made this page as an experiment to see if those people can gain the baseline understanding of their field that they need, quicker.
+		</p>
+		<p>
+			I'm going to use the physical process of Wrinkling as an example of what some students have to understand when they start research. If you've got no idea what that means, you can read my <a href="http://angusbayley.co.uk/wrinkling/index.html">introduction to wrinkling</a> to get up to speed (it's interesting, and you don't need any technical know-how to understand it).
+		</p>
+		<p>
+			Here, the period (aka. length of wrinkles, <i>&#923;</i>) and amplitude (aka. height of wrinkles, <i>A</i>) can be predicted using the following coupled equations: 
+		</p>
+		<p>
+			<img src="./Wrinkle simulation_files/definitions.png" width="600px">
+		</p>
+		<p>
+			...where &#949; is the compressive strain, and <span>E</span><sub>f</sub> and <span>E</span><sub>s</sub> (in simple terms) are the stiffnesses of the film and the substrate respectively. Wrinkling only happens after a threshold value of strain (&#949;<sub>c</sub>) has been reached.
+		</p>
+		<p>
+			<img src="./Wrinkle simulation_files/critStrain.png" width="200px">
+		</p>
+		<p>
+			Get the idea? Me neither. It is difficult and time consuming to get an intuitive feel for what all of this maths looks like at work in the real world, and this can leave students without a feeling of sufficient understanding (and therefore ownership) of their projects.
+		</p>
+		<p>
+			My idea is that understanding this process would be made much easier if the governing equations were accompanied by an interactive simulation. For the example above, it would look like this:
+		</p>
+		<div id="canvasHolder">
+			<iframe src="./Wrinkle simulation_files/wrinklesCanvas v1.html" width="620" height="420" frameborder="0" scrolling="no" ;=""></iframe> 
+			<!--<img width = 600px, height = 400px src="HoyerPreMouseover.png" onmouseover="canvasStartup()">-->
+		</div>
+		<br>
+		<p>
+			So, what do you think? Did it make the maths more accessible? PhD students: would you have benefited from an equivalent animation in your field when you started? Share your thoughts below.
+		</p>
+		<br>
+		
+		<iframe src="./Wrinkle simulation_files/viewform.html" width="600" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+		<br>
+		<!--<div id="mouse">Mouse</div>-->
+		<!--<span id="xySpan">First span</span>-->
+	</div>
+
+</body></html>
